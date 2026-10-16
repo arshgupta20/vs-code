@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Attendance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">A</div>
+      <div>
+        <h2>Attendly</h2>
+        <p>Class Management</p>
+      </div>
+    </div>
+
+    <nav>
+      <a class="active" href="#overview">▦ Overview</a>
+      <a href="#students">♙ Students</a>
+      <a href="#weekly">▥ Weekly Attendance</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="online-dot"></div>
+      <div>
+        <strong>Attendance Record</strong>
+        <p>Class overview</p>
+      </div>
+    </div>
+  </aside>
+
+  <main id="overview">
+    <header class="header">
+      <div>
+        <p class="eyebrow">CLASS MANAGEMENT / OVERVIEW</p>
+        <h1>Attendance Dashboard</h1>
+        <p class="subtitle">Monitor your class attendance in one place.</p>
+      </div>
+      <div class="date-box">
+        <span>▦</span>
+        <span id="todayDate"></span>
+      </div>
+    </header>
+
+    <section class="stats">
+      <article class="stat-card">
+        <div class="stat-heading">
+          <span>Total Students</span>
+          <span class="icon purple">♙</span>
+        </div>
+        <h2 id="totalStudents">0</h2>
+        <p>Students in this class</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-heading">
+          <span>Present Today</span>
+          <span class="icon green">✓</span>
+        </div>
+        <h2 id="presentCount">0</h2>
+        <p>Students marked present</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-heading">
+          <span>Absent Today</span>
+          <span class="icon orange">−</span>
+        </div>
+        <h2 id="absentCount">0</h2>
+        <p>Students marked absent</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-heading">
+          <span>Attendance Rate</span>
+          <span class="icon blue">◷</span>
+        </div>
+        <h2 id="attendanceRate">0%</h2>
+        <p>Present students percentage</p>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel" id="weekly">
+        <div class="panel-heading">
+          <div>
+            <h3>Weekly Attendance</h3>
+            <p>Attendance percentage by day</p>
+          </div>
+          <span class="legend"><i></i> Attendance</span>
+        </div>
+
+        <div class="chart">
+          <div class="y-axis">
+            <span>100%</span>
+            <span>75%</span>
+            <span>50%</span>
+            <span>25%</span>
+            <span>0%</span>
+          </div>
+          <div class="chart-area">
+            <div class="grid-lines">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="bars" id="weeklyChart"></div>
+          </div>
+        </div>
+        <p class="chart-note">Fixed sample figures. They will not randomly change on refresh.</p>
+      </article>
+
+      <article class="panel snapshot">
+        <div class="panel-heading">
+          <div>
+            <h3>Class Snapshot</h3>
+            <p>Today's attendance overview</p>
+          </div>
+        </div>
+
+        <div class="donut" id="attendanceDonut">
+          <div class="donut-text">
+            <strong id="donutPercent">0%</strong>
+            <span>Present</span>
+          </div>
+        </div>
+
+        <div class="snapshot-legend">
+          <span><i class="present-dot"></i> Present <b id="legendPresent">0</b></span>
+          <span><i class="absent-dot"></i> Absent <b id="legendAbsent">0</b></span>
+        </div>
+
+        <div class="highest">
+          <div class="star">★</div>
+          <div>
+            <small>Highest weekly attendance</small>
+            <strong id="highestDay">—</strong>
+            <small id="highestDetail">Weekly record</small>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel students-panel" id="students">
+      <div class="panel-heading student-heading">
+        <div>
+          <h3>Student Attendance</h3>
+          <p>Search and review the student list.</p>
+        </div>
+
+        <div class="tools">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search name or roll number..."
+            aria-label="Search students"
+          >
+
+          <select id="statusFilter" aria-label="Filter attendance status">
+            <option value="All">All Statuses</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ROLL NO.</th>
+              <th>STUDENT NAME</th>
+              <th>STATUS</th>
+              <th>ATTENDANCE</th>
+            </tr>
+          </thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+
+        <p class="empty-message" id="emptyState" hidden>
+          No students match your search.
+        </p>
+      </div>
+
+      <div class="table-footer">
+        <span id="showingCount">Showing 0 students</span>
+        <span>● Attendance dashboard</span>
+      </div>
+    </section>
+
+    <footer>Attendly · Class Attendance Dashboard</footer>
+  </main>
+</body>
+</html>
